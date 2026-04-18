@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopEasy - Home</title>
+    <link rel="stylesheet" href="index_style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1 id="welcomeUser">Welcome to ShopEasy</h1>
+        <p>Your one-stop shop for all essentials!</p>
+        <nav>
+            <a href="#products">Products</a> |
+            <a href="#categories">Categories</a> |
+            <a href="about.html">About Us</a> |
+            <a href="operation.html">Add Product</a> |
+            <a href="#" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+	<a align='right' href="order.php" class="btn">🛒 Place Order</a>
+    <!-- Featured Products -->
+    <section id="products" class="fade-section">
+        <h2>Featured Products</h2>
+        <p>Check out some of our top-selling products below!</p>
+        <div class="product-gallery">
+            <div class="product">
+                <a href="https://www.amazon.com/s?k=shoes" target="_blank">
+                    <img src="shoes.jpg" alt="Running Shoes">
+                </a>
+                <p><b>Comfortable Running Shoes</b></p>
+            </div>
+            <div class="product">
+                <a href="https://www.amazon.com/s?k=headphones" target="_blank">
+                    <img src="headphone.jpg" alt="Wireless Headphones">
+                </a>
+                <p><b>Noise-Canceling Headphones</b></p>
+            </div>
+            <div class="product">
+                <a href="https://www.amazon.com/s?k=backpack" target="_blank">
+                    <img src="backpack.jpg" alt="Backpack">
+                </a>
+                <p><b>Durable Backpack</b></p>
+            </div>
+            <div class="product">
+                <a href="https://www.amazon.com/s?k=Smartwatch" target="_blank">
+                    <img src="smart_watch.jpg" alt="Smart Watch">
+                </a>
+                <p><b>Smart Fitness Watch</b></p>
+            </div>
+            <div class="product">
+                <a href="https://www.freepik.com/free-photos-vectors/laptop-product" target="_blank">
+                    <img src="laptop.jpg" alt="Laptop">
+                </a>
+                <p><b>Gaming Laptop</b></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="fade-section">
+        <h2>New Arrivals</h2>
+        <div id="productList"></div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="fade-section">
+        <h2>Product Categories</h2>
+        <table>
+            <tr><th colspan="2">Top Product</th></tr>
+            <tr><td>Electronics</td><td>Smartphone</td></tr>
+            <tr><td>Fashion</td><td>T-Shirt</td></tr>
+        </table>
+    </section>
+
+    <!-- Offers -->
+    <section class="fade-section">
+        <h3>Deals Summary</h3>
+        <table>
+            <tr><th colspan="2">Today’s Offers</th></tr>
+            <tr><td>Buy 1 Get 1 Free</td><td>On selected items</td></tr>
+        </table>
+    </section>
+
+    <!-- Shipping Info -->
+    <section class="fade-section">
+        <h3>Shipping Info</h3>
+        <table>
+            <tr><th>Delivery Type</th><th>Time</th></tr>
+            <tr><td>Express</td><td>2-3 Days</td></tr>
+            <tr><td>Regular</td><td>4-5 Days</td></tr>
+        </table>
+    </section>
+
+    <!-- Sales Chart -->
+    <section class="fade-section">
+        <h3>Sales Chart</h3>
+        <table>
+            <tr><th colspan="2">Monthly Sales</th></tr>
+            <tr><td>January</td><td>February</td></tr>
+            <tr><td>₹500</td><td>₹800</td></tr>
+        </table>
+    </section>
+
+    <!-- Why Shop -->
+    <section class="fade-section">
+        <h3>Why Shop With Us?</h3>
+        <ul>
+            <li>Fast Delivery</li>
+            <li>Best Prices</li>
+            <li>Quality Products</li>
+            <li>Easy Returns</li>
+        </ul>
+    </section>
+
+    <!-- Order Steps -->
+    <section class="fade-section">
+        <h3>Steps to Order</h3>
+        <ol>
+            <li>Browse Products</li>
+            <li>Add to Cart</li>
+            <li>Checkout</li>
+            <li>Confirm Payment</li>
+        </ol>
+    </section>
+
+    <!-- Payment -->
+    <section class="fade-section">
+        <h3>Payment Methods</h3>
+        <dl>
+            <dt>Credit Card</dt>
+            <dd>Debit Card</dd>
+            <dt>Cash on Delivery</dt>
+        </dl>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>2025 ShopEasy Inc. All rights reserved.</p>
+        <a href="#top">Back to top</a>
+    </footer>
+
+    <!-- JavaScript -->
+   <script>
+window.onload = function(){
+    if(localStorage.getItem("isLoggedIn") !== "true"){
+        // Always redirect if not logged in
+        window.location.replace("signin.html");
+        return;
+    }
+
+    // If logged in, show user and load products
+    let user = localStorage.getItem("loggedUser");
+    document.getElementById("welcomeUser").innerText = "Welcome, " + user + "!";
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let list = document.getElementById("productList");
+    products.forEach(p => {
+        let item = document.createElement("p");
+        item.innerHTML = `<b>${p.category} <br><br>${p.name}</b> - $${p.price} <br> ${p.desc}`;
+        list.appendChild(item);
+    });
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopEasy - Add Product</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="product-container">
+        <h2>Add New Product</h2>
+        <form id="productForm">
+            <label>Product Name:</label>
+            <input type="text" id="pname" required>
+
+            <label>Category:</label>
+            <select id="pcategory">
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Accessories</option>
+            </select>
+
+            <label>Price:</label>
+            <input type="number" id="pprice" required>
+
+            <label>Description:</label>
+            <textarea id="pdesc" rows="7" cols="50"> Mention Complete Specification Of Product !!</textarea>
+			
+			
+            <label>Product Image:</label>
+            <input type="file" id="pimage" accept="image/*" required>
+
+            <div class="btn-group">
+                <input type="submit" value="Add Product">
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+
+        <p><a href="index.html">⬅ Back to Home</a></p>
+    </div>
+
+<script>
+document.getElementById("productForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const fileInput = document.getElementById("pimage");
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const imageData = event.target.result; // Base64 image data
+
+        const product = {
+            name: document.getElementById("pname").value,
+            category: document.getElementById("pcategory").value,
+            price: document.getElementById("pprice").value,
+            desc: document.getElementById("pdesc").value,
+            image: imageData
+        };
+
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        products.push(product);
+        localStorage.setItem("products", JSON.stringify(products));
+
+        alert("Product added successfully!");
+        window.location.href = "index.html";
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        alert("Please select an image!");
+    }
+});
+</script>
+</body>
+</html>

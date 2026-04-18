@@ -1,0 +1,169 @@
+/* === Global Styles === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ff7eb3, #65d6ce, #6a11cb);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Checkout Container === */
+.checkout-container {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  width: 420px;
+  animation: fadeIn 0.7s ease-in-out;
+  text-align: left;
+}
+
+/* === Header === */
+.checkout-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* === Labels and Inputs === */
+label {
+  display: block;
+  margin-bottom: 6px;
+  text-align: left;
+  font-weight: 500;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* === Button Group === */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  flex: 1;
+  padding: 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+/* === Primary Buttons === */
+input[type="submit"] {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+/* === Secondary Buttons === */
+input[type="reset"] {
+  background: linear-gradient(45deg, #ff4e50, #f9d423);
+  color: white;
+}
+
+input[type="reset"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 78, 80, 0.4);
+}
+
+/* === Confirmation Section === */
+.order-confirmation {
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.order-confirmation h3 {
+  color: #2c3e50;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.order-confirmation p {
+  color: #555;
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.track-btn {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.track-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+/* === Link Back to Home === */
+p a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+p a:hover {
+  color: #6a11cb;
+  text-decoration: underline;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
